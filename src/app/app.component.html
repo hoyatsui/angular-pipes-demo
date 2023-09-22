@@ -1,0 +1,55 @@
+<h1>Pipes</h1>
+
+<h2>Built-in Pipes</h2>
+<p><b>Default Date:</b> {{today}}</p>
+<p><b>Short time:</b> {{today | date:'short'}}</p>
+<p><b>Full date:</b> {{today | date:'fullDate'}}</p>
+<p><b>dd/mm/yyyy:</b> {{today | date:'d/M/y'}}</p>
+<p><b>Uppercase pipe:</b> {{message | uppercase}}</p>
+<p><b>Lowercase pipe:</b> {{message | lowercase}}</p>
+<p><b>Currency pipe (USD):</b> {{100 | currency:'USD':true}}</p>
+<p><b>Currency pipe (CNY):</b> {{100 | currency:'CNY':"symbol-narrow"}}</p>
+
+<h2>Custom Pipes</h2>
+<p><b>Reverse String:</b> {{message | reverseString}}</p>
+
+<h2>Pipe Chaining</h2>
+<p>
+    <b>Uppercase and Reverse String:</b> {{message | uppercase | reverseString}}
+</p>
+
+<h2>Pure and Impure Pipes</h2>
+<p>Pure Pipe: {{ message | pureLogger }}</p>
+<p>Impure Pipe: {{ message | impureLogger }}</p>
+
+<button (click)="trigger()">Trigger change detection</button>
+<button (click)="changeMessage()">Change the message</button>
+
+<br>
+<h1>Directives</h1>
+<h2>Attribute Directives</h2>
+<p [ngClass]="{'yellow':isYellow}" [ngStyle]="{'color':isGreen ? 'green' : 'blue'}">{{message}}</p>
+<button (click)="changeClass()">ChangeClass</button>
+<button (click)="changeColor()">ChangeColor</button>
+
+<h2>Structral Directives</h2>
+
+<p><b>ngIf: </b> <span *ngIf="showElement">Hello!</span></p>
+<button (click)="toggleMessage()">Show Message</button>
+
+<p><b>ngFor: </b><span *ngFor="let item of itemList"> {{item.name}} </span></p>
+<p [ngSwitch]="value"><b>ngSwitch: </b>
+    <span *ngSwitchCase="'A'"> Value is A </span>
+    <span *ngSwitchCase="'B'"> Value is B </span>
+    <span *ngSwitchDefault> Default value </span>
+</p>
+
+<h2>Custom Attribute Directive</h2>
+<p appCustomDirective>{{message}}</p>
+
+
+<h1>Lifecycle Hooks</h1>
+
+<app-lifecycle-demo [inputProperty]="someProperty"></app-lifecycle-demo>
+
+<button (click)="changeInput()">Change Input Property</button>
